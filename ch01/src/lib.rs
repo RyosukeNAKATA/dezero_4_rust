@@ -1,1 +1,1 @@
-mod bandit;
+pub mod bandit;

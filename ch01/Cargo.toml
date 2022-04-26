@@ -15,5 +15,9 @@ name = "avg"
 path = "src/avg.rs"
 
 [[bin]]
-name = "band"
+name = "bandit"
 path = "src/bandit.rs"
+
+[[bin]]
+name = "banditavg"
+path = "src/bandit_avg.rs"

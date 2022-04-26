@@ -28,19 +28,19 @@ impl Bandit {
 
 #[allow(non_snake_case)]
 pub struct Agent {
-    epsilon: f64,
-    Qs: Vec<f64>,
-    ns: Vec<f64>,
+    pub epsilon: f64,
+    pub Qs: Vec<f64>,
+    pub ns: Vec<f64>,
 }
 
 #[allow(dead_code)]
 #[allow(non_snake_case)]
 impl Agent {
-    fn update(&mut self, action: usize, reward: i32) {
+    pub fn update(&mut self, action: usize, reward: i32) {
         self.ns[action] += 1_f64;
         self.Qs[action] += (reward as f64 - self.Qs[action]) / self.ns[action];
     }
-    fn get_action(&self) -> usize {
+    pub fn get_action(&self) -> usize {
         let random_num: f64 = rand::thread_rng().gen();
         if random_num < self.epsilon {
             rand::thread_rng().gen_range(0..self.Qs.len()) as usize

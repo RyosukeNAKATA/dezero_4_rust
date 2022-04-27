@@ -1,23 +1,18 @@
 use plotters::prelude::*;
 use rand::Rng;
+use std::cmp::Ordering;
 
-pub struct Bandit {}
+#[allow(dead_code)]
+pub struct Bandit {
+    pub arms: usize,
+    pub rates: Vec<f64>,
+}
 
 #[allow(dead_code)]
 impl Bandit {
-    pub fn init() -> Vec<f64> {
-        let arm = 10;
-        let mut rates: Vec<f64> = vec![];
-        for _ in 0..arm {
-            rates.push(rand::thread_rng().gen());
-        }
-        rates
-    }
-    pub fn play(&self, arm: usize) -> i32 {
-        let rates: Vec<f64> = Bandit::init();
-        let rate: f64 = rates[arm];
+    pub fn play(&mut self, arm: usize) -> i32 {
+        let rate: f64 = self.rates[arm];
         let random_num: f64 = rand::thread_rng().gen();
-
         if random_num < rate {
             1
         } else {
@@ -45,7 +40,13 @@ impl Agent {
         if random_num < self.epsilon {
             rand::thread_rng().gen_range(0..self.Qs.len()) as usize
         } else {
-            self.Qs.iter().fold(0.0 / 0.0, |m, v| v.max(m)) as usize
+            // return self.Qs.argmax()
+            self.Qs
+                .iter()
+                .enumerate()
+                .max_by(|(_, a), (_, b)| a.partial_cmp(b).unwrap_or(Ordering::Equal))
+                .map(|(index, _)| index)
+                .unwrap() as usize
         }
     }
 }
@@ -55,7 +56,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let steps = 1_000;
     let epsilon = 0.1;
 
-    let bandit = Bandit {};
+    let mut bandit = Bandit {
+        arms: 10,
+        rates: vec![rand::thread_rng().gen(); 10],
+    };
     let mut agent = Agent {
         epsilon: epsilon,
         Qs: vec![0f64; 10],
@@ -77,10 +81,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     println!("Total reward: {:?}", total_reward);
 
-    let (rewards_min, rewards_max) = total_rewards
+    // draw graphs
+    let (_, rewards_max) = total_rewards
         .iter()
         .fold((0.0 / 0.0, 0.0 / 0.0), |(m, n), v| (v.min(m), v.max(n)));
-    let (rates_min, rates_max) = rates
+    let (_, rates_max) = rates
         .iter()
         .fold((0.0 / 0.0, 0.0 / 0.0), |(m, n), v| (v.min(m), v.max(n)));
 
@@ -94,36 +99,27 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     let root =
-        BitMapBackend::new("output/bandit_total_reward.png", (1280, 960)).into_drawing_area();
+        BitMapBackend::new("output/bandit/total_reward.png", (1280, 960)).into_drawing_area();
     root.fill(&WHITE)?;
-    let root = root.margin(10f64, 10f64, 10f64, 10f64);
     let mut chart = ChartBuilder::on(&root)
         .caption("Bandit Total Reward", ("sans-serif", 20).into_font())
+        .margin(10)
         .x_label_area_size(50)
         .y_label_area_size(50)
-        .build_cartesian_2d(0f64..1_000f64, rewards_min..rewards_max)?;
-    chart
-        .configure_mesh()
-        .x_labels(10)
-        .y_labels(10)
-        .y_label_formatter(&|x| format!("{:.1}", x))
-        .draw()?;
+        .build_cartesian_2d(0f64..1_000f64, 0f64..rewards_max)?;
+    chart.configure_mesh().draw()?;
     chart.draw_series(LineSeries::new(points_total_rewards, &RED))?;
 
-    let root = BitMapBackend::new("output/bandit_rates.png", (1280, 960)).into_drawing_area();
+    let root = BitMapBackend::new("output/bandit/rates.png", (1280, 960)).into_drawing_area();
     root.fill(&WHITE)?;
-    let root = root.margin(10f64, 10f64, 10f64, 10f64);
+    let root = root.margin(10, 10, 10, 10);
     let mut chart = ChartBuilder::on(&root)
-        .caption("Bandit Total Reward", ("sans-serif", 20).into_font())
+        .caption("Bandit Rates", ("sans-serif", 20).into_font())
+        .margin(10)
         .x_label_area_size(50)
         .y_label_area_size(50)
-        .build_cartesian_2d(0f64..1_000f64, rates_min..rates_max)?;
-    chart
-        .configure_mesh()
-        .x_labels(10)
-        .y_labels(10)
-        .y_label_formatter(&|x| format!("{:.1}", x))
-        .draw()?;
+        .build_cartesian_2d(0f64..1_000f64, 0f64..rates_max)?;
+    chart.configure_mesh().draw()?;
     chart.draw_series(LineSeries::new(points_rates, &RED))?;
 
     Ok(())

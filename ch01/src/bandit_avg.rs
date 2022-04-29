@@ -39,13 +39,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         avg_rates.push(mean_rates);
         points_all.push(((i + 1) as f64, mean_rates));
     }
-    for v in all_rates {
-        println!("{:?}", v.iter().sum::<f64>() / v.len() as f64);
-    }
     let (_, rates_max) = avg_rates
         .iter()
         .fold((0.0 / 0.0, 0.0 / 0.0), |(m, n), v| (v.min(m), v.max(n)));
-
+    // draw a graph
     let root = BitMapBackend::new("output/bandit_avg/rates_epsilon_0.1.png", (1280, 960))
         .into_drawing_area();
     root.fill(&WHITE)?;

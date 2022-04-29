@@ -70,8 +70,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut rates: Vec<f64> = vec![];
 
     for step in 0..steps {
+        // 1. choose an action
         let action = agent.get_action();
+        // 2. get a reward
         let reward = bandit.play(action);
+        // 3. learn from an action and a reward
         agent.update(action, reward);
         total_reward += reward;
 
@@ -81,7 +84,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     println!("Total reward: {:?}", total_reward);
 
-    // draw graphs
+    // preparate for drawing graphs
     let (_, rewards_max) = total_rewards
         .iter()
         .fold((0.0 / 0.0, 0.0 / 0.0), |(m, n), v| (v.min(m), v.max(n)));
@@ -98,6 +101,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         points_rates.push(((i + 1) as f64, *val));
     }
 
+    // draw a graph1
     let root =
         BitMapBackend::new("output/bandit/total_reward.png", (1280, 960)).into_drawing_area();
     root.fill(&WHITE)?;
@@ -110,6 +114,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     chart.configure_mesh().draw()?;
     chart.draw_series(LineSeries::new(points_total_rewards, &RED))?;
 
+    // draw a graph2
     let root = BitMapBackend::new("output/bandit/rates.png", (1280, 960)).into_drawing_area();
     root.fill(&WHITE)?;
     let root = root.margin(10, 10, 10, 10);

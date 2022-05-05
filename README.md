@@ -7,7 +7,7 @@
 run `dezero_4_rust/ch0x/src/yyy.rs`
 ```
 dezero_4_rust/
-> cargo run -p ch0x --bin zzz
+$ cargo run -p ch0x --bin zzz
 ```
 
 | ch0x/src/yyy.rs | zzz |
@@ -23,7 +23,7 @@ If you want to run `dezero_4_rust/src/ch01/avg`,
 
 ```
 dezero_4_rust/
-> cargo run -p ch01 --bin avg
+$ cargo run -p ch01 --bin avg
 ```
 
 # License

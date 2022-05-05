@@ -19,7 +19,7 @@ dezero_4_rust/
 | ch04/src/dp.rs | dp |
 | ch04/src/dp_inplace.rs | inplace |
 
-case1
+## Sample case
 if you want to run `dezero_4_rust/src/ch01/avg`,
 
 ```

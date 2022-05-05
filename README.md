@@ -40,4 +40,5 @@ dezero_4_rust/
 0.4665302782375901
 ```
 
-
+# License
+The code in this repository is [MIT](https://opensource.org/licenses/MIT) licensed.

@@ -4,29 +4,41 @@
 
 # Ch01
 
-
-
-for run `ch01/avg.rs`
+run `ch01/src/avg.rs`
 ```
 ch01/
 > cargo run --bin avg
 ```
 
-for run `ch01/bandit.rs`
+run `ch01/src/bandit.rs`
 ```
 ch01/
 > cargo run --bin bandit
 ```
 
-for run `ch01/bandit_avg.rs`
+run `ch01/src/bandit_avg.rs`
 ```
 ch01/
 > cargo run --bin banditavg
 ```
 
-for run `ch01/non_stationary.rs`
+run `ch01/src/non_stationary.rs`
 ```
 ch01/
 > cargo run --bin nonstat
+```
+
+# Ch04
+
+run `ch04/src/dp.rs`
+```
+ch01/
+> cargo run --bin dp
+```
+
+run `ch04/src/dp_inplace.rs`
+```
+ch01/
+> cargo run --bin inplace
 ```
 

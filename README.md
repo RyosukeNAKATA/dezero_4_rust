@@ -2,43 +2,19 @@
 
 # [Original Python Source Code](https://github.com/oreilly-japan/deep-learning-from-scratch-4)
 
-# Ch01
+# How to run
 
-run `dezero_4_rust/ch01/src/avg.rs`
+run `dezero_4_rust/ch0x/src/yyy.rs`
 ```
 dezero_4_rust/
-> cargo run -p ch01 --bin avg
+> cargo run -p ch0x --bin zzz
 ```
 
-run `dezero_4_rust/ch01/src/bandit.rs`
-```
-dezero_4_rust/
-> cargo run -p ch01 --bin bandit
-```
-
-run `dezero_4_rust/ch01/src/bandit_avg.rs`
-```
-dezero_4_rust/
-> cargo run -p ch01 --bin banditavg
-```
-
-run `dezero_4_rust/ch01/src/non_stationary.rs`
-```
-dezero_4_rust/
-> cargo run -p ch01 --bin nonstat
-```
-
-# Ch04
-
-run `dezero_4_rust/ch04/src/dp.rs`
-```
-dezero_4_rust/
-> cargo run -p ch04 --bin dp
-```
-
-run `dezero_4_rust/ch04/src/dp_inplace.rs`
-```
-dezero_4_rust/
-> cargo run -p ch04 --bin inplace
-```
-
+| ch0x/src/yyy.rs | zzz |
+| - | - |
+| ch01/src/avg.rs | avg |
+| ch01/src/bandit.rs | bandit |
+| ch01/src/bandit_avg.rs | banditavg |
+| ch01/src/non_stationary.rs | nonstat |
+| ch04/src/dp.rs | dp |
+| ch04/src/dp_inplace.rs | inplace |

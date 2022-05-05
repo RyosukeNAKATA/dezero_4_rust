@@ -19,7 +19,7 @@ $ cargo run -p ch0x --bin zzz
 | ch04/src/dp.rs | dp |
 | ch04/src/dp_inplace.rs | inplace |
 
-If you want to run `dezero_4_rust/src/ch01/avg`,
+If you want to run `dezero_4_rust/ch01/src/avg`,
 
 ```
 dezero_4_rust/

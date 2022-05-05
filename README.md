@@ -32,13 +32,13 @@ ch01/
 
 run `ch04/src/dp.rs`
 ```
-ch01/
+ch04/
 > cargo run --bin dp
 ```
 
 run `ch04/src/dp_inplace.rs`
 ```
-ch01/
+ch04/
 > cargo run --bin inplace
 ```
 

@@ -11,3 +11,7 @@ edition = "2021"
 [[bin]]
 name = "dp"
 path = "src/dp.rs"
+
+[[bin]]
+name = "inplace"
+path = "src/dp_inplace.rs"

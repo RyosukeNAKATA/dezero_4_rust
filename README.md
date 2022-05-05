@@ -4,41 +4,41 @@
 
 # Ch01
 
-run `ch01/src/avg.rs`
+run `dezero_4_rust/ch01/src/avg.rs`
 ```
-ch01/
-> cargo run --bin avg
-```
-
-run `ch01/src/bandit.rs`
-```
-ch01/
-> cargo run --bin bandit
+dezero_4_rust/
+> cargo run -p ch01 --bin avg
 ```
 
-run `ch01/src/bandit_avg.rs`
+run `dezero_4_rust/ch01/src/bandit.rs`
 ```
-ch01/
-> cargo run --bin banditavg
+dezero_4_rust/
+> cargo run -p ch01 --bin bandit
 ```
 
-run `ch01/src/non_stationary.rs`
+run `dezero_4_rust/ch01/src/bandit_avg.rs`
 ```
-ch01/
-> cargo run --bin nonstat
+dezero_4_rust/
+> cargo run -p ch01 --bin banditavg
+```
+
+run `dezero_4_rust/ch01/src/non_stationary.rs`
+```
+dezero_4_rust/
+> cargo run -p ch01 --bin nonstat
 ```
 
 # Ch04
 
-run `ch04/src/dp.rs`
+run `dezero_4_rust/ch04/src/dp.rs`
 ```
-ch04/
-> cargo run --bin dp
+dezero_4_rust/
+> cargo run -p ch04 --bin dp
 ```
 
-run `ch04/src/dp_inplace.rs`
+run `dezero_4_rust/ch04/src/dp_inplace.rs`
 ```
-ch04/
-> cargo run --bin inplace
+dezero_4_rust/
+> cargo run -p ch04 --bin inplace
 ```
 

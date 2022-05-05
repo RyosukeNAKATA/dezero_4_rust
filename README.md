@@ -19,25 +19,11 @@ dezero_4_rust/
 | ch04/src/dp.rs | dp |
 | ch04/src/dp_inplace.rs | inplace |
 
-## Sample case
-if you want to run `dezero_4_rust/src/ch01/avg`,
+If you want to run `dezero_4_rust/src/ch01/avg`,
 
 ```
 dezero_4_rust/
 > cargo run -p ch01 --bin avg
-.
-.
-		Running `target/debug/avg`
-0.605084221069883
-0.49038689909405236
-0.6352384947578045
-0.6616139546256204
-0.53160150265396
-0.5647862043665728
-0.5288333640055982
-0.479101304919558
-0.426847506314089
-0.4665302782375901
 ```
 
 # License
